@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autocomplete</title>
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Cabecera -->
+    <header class="bg-blue-400 flex justify-between py-5 px-12">
+        <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Logo_UNAP.png/800px-Logo_UNAP.png" alt="UNA PUNO" class="w-24">
+        </div>
+        <div class="flex flex-col justify-center items-center">
+            <h1 class="text-4xl font-bold">UNIVERSIDAD NACIONAL DEL ALTIPLANO</h1>
+            <h2 class="text-3xl font-semibold pt-2">DIRECCION DE ADMISION</h2>
+        </div>
+        <div>
+            <img src="https://admision.unap.edu.pe/img/dad.png" alt="DAD PUNO" class="w-24">
+        </div>
+    </header>
+
+    <!-- Titulo -->
+    <h1 class="py-8 px-12 font-bold text-xl">GENERAR REPORTES</h1>
+    <!-- Inputs y Generar reporte -->
+    <section class="flex bg-gray-100 justify-between px-12 py-8">
+        <div class=" flex">
+
+            <div class="relative px-1">
+                <h1 class="text-gray-600 font-semibold">AREA</h1>
+                <input type="text" id="autocompleteInput1"
+                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Search..." />
+                <ul id="autocompleteList1" class="absolute z-10 w-full bg-white border rounded-md shadow-lg hidden">
+                </ul>
+            </div>
+            <div class="relative px-1">
+                <h1 class="text-gray-600 font-semibold">FACULTAD</h1>
+                <input type="text" id="autocompleteInput2"
+                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Search..." />
+                <ul id="autocompleteList2" class="absolute z-10 w-full bg-white border rounded-md shadow-lg hidden">
+                </ul>
+            </div>
+            <div class="relative px-1">
+                <h1 class="text-gray-600 font-semibold">ESCUELA PROFESIONAL</h1>
+                <input type="text" id="autocompleteInput3"
+                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Search..." />
+                <ul id="autocompleteList3" class="absolute z-10 w-full bg-white border rounded-md shadow-lg hidden">
+                </ul>
+            </div>
+            <div class="relative px-1">
+                <h1 class="text-gray-600 font-semibold">MODALIDAD DE INGRESO</h1>
+                <input type="text" id="autocompleteInput4"
+                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Search..." />
+                <ul id="autocompleteList4" class="absolute z-10 w-full bg-white border rounded-md shadow-lg hidden">
+                </ul>
+            </div>
+            <div class="relative px-1">
+                <h1 class="text-gray-600 font-semibold">AÑO DE INGRESO</h1>
+                <input type="text" id="autocompleteInput5"
+                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Search..." />
+                <ul id="autocompleteList5" class="absolute z-10 w-full bg-white border rounded-md shadow-lg hidden">
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="flex">
+            <button id="dropdownButton2"
+                class="bg-green-500 hover:bg-green-700 text-white font-bold p-4 rounded focus:outline-none focus:shadow-outline">
+                GENERAR REPORTE
+            </button>
+        </div>
+    </section>
+
+    <!-- Tabla -->
+    <section class="px-12">
+        <div>
+            <h1 class="pt-8 pb-2 pl-4 font-semibold text-xl">LISTA DE REPORTES GENERADOS</h1>
+        </div>
+        <hr class="py-2">
+
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg px-4">
+
+            <table id="Tabla01" class="w-full text-sm text-left text-black">
+                <thead class="text-sm uppercase bg-gray-200">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Usuario
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Fecha y hora
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Modalidad
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Detalle del reporte
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Año
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Reporte
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white border-b  dark:border-gray-700 hover:bg-gray-100 ">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                            Nuno Mendez
+                        </th>
+                        <td class="px-6 py-4">
+                            12-10-2023 11:53 AM
+                        </td>
+                        <td class="px-6 py-4">
+                            General
+                        </td>
+                        <td class="px-6 py-4">
+                            E.P. Ingenieria de Minas
+                        </td>
+                        <td class="px-6 py-4">
+                            2024-I
+                        </td>
+                        <td class="px-6 py-4">
+                            PDF
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b  dark:border-gray-700 hover:bg-gray-100 ">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                            Nuno Mendez
+                        </th>
+                        <td class="px-6 py-4">
+                            12-10-2023 11:53 AM
+                        </td>
+                        <td class="px-6 py-4">
+                            Extraordinario
+                        </td>
+                        <td class="px-6 py-4">
+                            Fac. Civil y Arqui.
+                        </td>
+                        <td class="px-6 py-4">
+                            2024-I
+                        </td>
+                        <td class="px-6 py-4">
+                            PDF
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b  dark:border-gray-700 hover:bg-gray-100 ">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                            Nuno Mendez
+                        </th>
+                        <td class="px-6 py-4">
+                            12-10-2023 11:53 AM
+                        </td>
+                        <td class="px-6 py-4">
+                            CEPRE
+                        </td>
+                        <td class="px-6 py-4">
+                            E.P. Medicina Humana
+                        </td>
+                        <td class="px-6 py-4">
+                            2023-II
+                        </td>
+                        <td class="px-6 py-4">
+                            PDF
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b  dark:border-gray-700 hover:bg-gray-100 ">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                            Nuno Mendez
+                        </th>
+                        <td class="px-6 py-4">
+                            12-10-2023 11:53 AM
+                        </td>
+                        <td class="px-6 py-4">
+                            General
+                        </td>
+                        <td class="px-6 py-4">
+                            Area Sociales
+                        </td>
+                        <td class="px-6 py-4">
+                            2023-I
+                        </td>
+                        <td class="px-6 py-4">
+                            PDF
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </section>
+
+
+    <!-- Inputs con busqueda -->
+    <script>
+        const areas = ['Ingeniería', 'Biomédicas', 'Sociales'];
+        const facultades = ['Facultad de ...', 'Facultad de ...', 'Facultad de ...', 'Facultad de ...'];
+        const escuelasp = ['E.P de ...', 'E.P de ...', 'E.P de ...', 'E.P de ...'];
+        const modalidades = ['Examen Extraordinario', 'Examen CEPRE UNA', 'Examen General'];
+        const años = ['2023-I', '2023-II', '2024-I', '2024-II'];
+
+        function initAutocomplete(inputId, listId, suggestions) {
+            const autocompleteInput = document.getElementById(inputId);
+            const autocompleteList = document.getElementById(listId);
+
+            autocompleteInput.addEventListener('input', () => {
+                const searchTerm = autocompleteInput.value.toLowerCase();
+                const filteredSuggestions = suggestions.filter(suggestion =>
+                    suggestion.toLowerCase().includes(searchTerm)
+                );
+
+                autocompleteList.innerHTML = '';
+                filteredSuggestions.forEach(suggestion => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = suggestion;
+                    listItem.classList.add('px-4', 'py-2', 'hover:bg-gray-100', 'cursor-pointer');
+                    listItem.addEventListener('click', () => {
+                        autocompleteInput.value = suggestion;
+                        autocompleteList.classList.add('hidden');
+                    });
+                    autocompleteList.appendChild(listItem);
+                });
+
+                if (filteredSuggestions.length > 0) {
+                    autocompleteList.classList.remove('hidden');
+                } else {
+                    autocompleteList.classList.add('hidden');
+                }
+            });
+
+            window.addEventListener('click', (event) => {
+                if (!event.target.matches(`#${inputId}`) && !event.target.matches(`#${listId} *`)) {
+                    autocompleteList.classList.add('hidden');
+                }
+            });
+        }
+
+        initAutocomplete('autocompleteInput1', 'autocompleteList1', areas);
+        initAutocomplete('autocompleteInput2', 'autocompleteList2', facultades);
+        initAutocomplete('autocompleteInput3', 'autocompleteList3', escuelasp);
+        initAutocomplete('autocompleteInput4', 'autocompleteList4', modalidades);
+        initAutocomplete('autocompleteInput5', 'autocompleteList5', años);
+    </script>
+
+    <!-- Botones de la tabla -->
+    <script>
+        let table = new DataTable('#Tabla01');
+    </script>
+
+</body>
+
+</html>

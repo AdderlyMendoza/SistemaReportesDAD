@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GENERADOR DE REPORTES - DAD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+
+    <div class=" bg-red-100 p-8 flex text-gray-600">
+
+        <h1 class="px-4">Filtrar por: </h1>
+
+        <div class="flex space-x-4">
+            <div class="relative">
+                <div class="relative">
+                    <button id="dropdownButton1"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex items-center">
+                        AREA
+                        <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" class="ml-4"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z"
+                                fill="#0F0F0F" />
+                        </svg>
+                    </button>
+                </div>
+                <div id="dropdownMenu1" class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden">
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ingenierías</a>
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Biomédicas</a>
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Sociales</a>
+                </div>
+            </div>
+
+            <div class="relative">
+                <button id="dropdownButton2"
+                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    FACULTAD
+                </button>
+                <div id="dropdownMenu2" class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden">
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Facultad de ...</a>
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Facultad de ...</a>
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Facultad de ...</a>
+                </div>
+            </div>
+
+            <div class="relative">
+                <button id="dropdownButton3"
+                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    ESCUELA
+                </button>
+                <div id="dropdownMenu3" class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden">
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a>
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 2</a>
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 3</a>
+                </div>
+            </div>
+
+            <div class="relative">
+                <button id="dropdownButton4"
+                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    MODALIDAD DE INGRESO
+                </button>
+                <div id="dropdownMenu4" class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden">
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a>
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 2</a>
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 3</a>
+                </div>
+            </div>
+
+            <div class="relative">
+                <button id="dropdownButton5"
+                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    AÑO DE INGRESO
+                </button>
+                <div id="dropdownMenu5" class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden">
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">2023 - I</a>
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">2023 - II</a>
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">2024 - I</a>
+                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">2024 - II</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const dropdownButtons = document.querySelectorAll('[id^="dropdownButton"]');
+        const dropdownMenus = document.querySelectorAll('[id^="dropdownMenu"]');
+
+        dropdownButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                dropdownMenus[index].classList.toggle('hidden');
+            });
+        });
+
+        window.addEventListener('click', (event) => {
+            dropdownButtons.forEach((button, index) => {
+                if (!event.target.matches(`#dropdownButton${index + 1}`) && !event.target.matches(`#dropdownMenu${index + 1} *`)) {
+                    dropdownMenus[index].classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
