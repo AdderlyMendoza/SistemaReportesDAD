@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+</head>
+
+<body>
+
+    <!-- UNA PUNO / DAD E IMAGEN DE USER -->
+    <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+        <div class="px-3 py-3 lg:px-5 lg:pl-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center justify-start rtl:justify-end">
+                    <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar"
+                        aria-controls="logo-sidebar" type="button"
+                        class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+                        <span class="sr-only">Open sidebar</span>
+                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path clip-rule="evenodd" fill-rule="evenodd"
+                                d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
+                            </path>
+                        </svg>
+                    </button>
+                    <a href="https://flowbite.com" class="flex ms-2 md:me-24">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Logo_UNAP.png/800px-Logo_UNAP.png"
+                            class="h-8 me-3" alt="FlowBite Logo" />
+                        <span
+                            class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">UNA
+                            PUNO / DAD</span>
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <div class="flex items-center ms-3">
+                        <!-- Menu desplegable USER -->
+                        <div class="relative">
+                            <button class="px-4 text-white rounded focus:outline-none" aria-expanded="false"
+                                data-dropdown-toggle="dropdown-user">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="w-8 h-8 rounded-full hover:opacity-100"
+                                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                                    alt="user photo">
+                            </button>
+                            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden">
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opción 1</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opción 2</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opción 3</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SIDEBAR -->
+    <aside id="logo-sidebar"
+        class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        aria-label="Sidebar">
+        <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+            <ul class="space-y-2 font-medium">
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 22 21">
+                            <path
+                                d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+                            <path
+                                d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+                        </svg>
+                        <span class="ms-3">Generar Reporte</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 18 18">
+                            <path
+                                d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
+                        </svg>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Kanban</span>
+                        <span
+                            class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 20 20">
+                            <path
+                                d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />
+                        </svg>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Inbox</span>
+                        <span
+                            class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 20 18">
+                            <path
+                                d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
+                        </svg>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 18 20">
+                            <path
+                                d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z" />
+                        </svg>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Products</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Contenido -->
+    <div class="p-4 sm:ml-64">
+        <div class="p-4 dark:border-gray-700 mt-8">
+
+            <!-- Titulo -->
+            <h1 class="py-8 font-bold text-xl">GENERAR REPORTES</h1>
+            <!-- Inputs y Generar reporte -->
+            <section class="flex bg-gray-100 justify-between px-12 py-8">
+                <div class=" flex">
+
+                    <div class="relative px-1">
+                        <h1 class="text-gray-600 font-semibold">AREA</h1>
+                        <input type="text" id="autocompleteInput1"
+                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Search..." />
+                        <ul id="autocompleteList1"
+                            class="absolute z-10 w-full bg-white border rounded-md shadow-lg hidden">
+                        </ul>
+                    </div>
+                    <div class="relative px-1">
+                        <h1 class="text-gray-600 font-semibold">FACULTAD</h1>
+                        <input type="text" id="autocompleteInput2"
+                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Search..." />
+                        <ul id="autocompleteList2"
+                            class="absolute z-10 w-full bg-white border rounded-md shadow-lg hidden">
+                        </ul>
+                    </div>
+                    <div class="relative px-1">
+                        <h1 class="text-gray-600 font-semibold">ESCUELA PROFESIONAL</h1>
+                        <input type="text" id="autocompleteInput3"
+                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Search..." />
+                        <ul id="autocompleteList3"
+                            class="absolute z-10 w-full bg-white border rounded-md shadow-lg hidden">
+                        </ul>
+                    </div>
+                    <div class="relative px-1">
+                        <h1 class="text-gray-600 font-semibold">MODALIDAD DE INGRESO</h1>
+                        <input type="text" id="autocompleteInput4"
+                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Search..." />
+                        <ul id="autocompleteList4"
+                            class="absolute z-10 w-full bg-white border rounded-md shadow-lg hidden">
+                        </ul>
+                    </div>
+                    <div class="relative px-1">
+                        <h1 class="text-gray-600 font-semibold">AÑO DE INGRESO</h1>
+                        <input type="text" id="autocompleteInput5"
+                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Search..." />
+                        <ul id="autocompleteList5"
+                            class="absolute z-10 w-full bg-white border rounded-md shadow-lg hidden">
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="flex">
+                    <button id="dropdownButton2"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold p-4 rounded focus:outline-none focus:shadow-outline">
+                        GENERAR REPORTE
+                    </button>
+                </div>
+            </section>
+
+            <!-- Tabla -->
+            <section>
+                <div>
+                    <h1 class="pt-8 pb-2 font-semibold text-xl">LISTA DE REPORTES GENERADOS</h1>
+                </div>
+                <hr class="py-2">
+
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg px-4">
+                    <table id="Tabla01" class="w-full text-sm text-left text-black my-2">
+                        <thead class="text-sm uppercase bg-gray-200">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Usuario
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Fecha y hora
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Modalidad
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Detalle del reporte
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Año
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Reporte
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b  dark:border-gray-700 hover:bg-gray-100 ">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                    Nuno Mendez
+                                </th>
+                                <td class="px-6 py-4">
+                                    12-10-2023 11:53 AM
+                                </td>
+                                <td class="px-6 py-4">
+                                    General
+                                </td>
+                                <td class="px-6 py-4">
+                                    E.P. Ingenieria de Minas
+                                </td>
+                                <td class="px-6 py-4">
+                                    2024-I
+                                </td>
+                                <td class="px-6 py-4">
+                                    PDF
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b  dark:border-gray-700 hover:bg-gray-100 ">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                    Nuno Mendez
+                                </th>
+                                <td class="px-6 py-4">
+                                    12-10-2023 11:53 AM
+                                </td>
+                                <td class="px-6 py-4">
+                                    Extraordinario
+                                </td>
+                                <td class="px-6 py-4">
+                                    Fac. Civil y Arqui.
+                                </td>
+                                <td class="px-6 py-4">
+                                    2024-I
+                                </td>
+                                <td class="px-6 py-4">
+                                    PDF
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b  dark:border-gray-700 hover:bg-gray-100 ">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                    Nuno Mendez
+                                </th>
+                                <td class="px-6 py-4">
+                                    12-10-2023 11:53 AM
+                                </td>
+                                <td class="px-6 py-4">
+                                    CEPRE
+                                </td>
+                                <td class="px-6 py-4">
+                                    E.P. Medicina Humana
+                                </td>
+                                <td class="px-6 py-4">
+                                    2023-II
+                                </td>
+                                <td class="px-6 py-4">
+                                    PDF
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b  dark:border-gray-700 hover:bg-gray-100 ">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                    Nuno Mendez
+                                </th>
+                                <td class="px-6 py-4">
+                                    12-10-2023 11:53 AM
+                                </td>
+                                <td class="px-6 py-4">
+                                    General
+                                </td>
+                                <td class="px-6 py-4">
+                                    Area Sociales
+                                </td>
+                                <td class="px-6 py-4">
+                                    2023-I
+                                </td>
+                                <td class="px-6 py-4">
+                                    PDF
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </section>
+
+        </div>
+    </div>
+
+
+
+
+    <!-- Inputs con busqueda -->
+    <script>
+        const areas = ['Ingeniería', 'Biomédicas', 'Sociales'];
+        const facultades = ['Facultad de ...', 'Facultad de ...', 'Facultad de ...', 'Facultad de ...'];
+        const escuelasp = ['E.P de ...', 'E.P de ...', 'E.P de ...', 'E.P de ...'];
+        const modalidades = ['Examen Extraordinario', 'Examen CEPRE UNA', 'Examen General'];
+        const años = ['2023-I', '2023-II', '2024-I', '2024-II'];
+
+        function initAutocomplete(inputId, listId, suggestions) {
+            const autocompleteInput = document.getElementById(inputId);
+            const autocompleteList = document.getElementById(listId);
+
+            autocompleteInput.addEventListener('input', () => {
+                const searchTerm = autocompleteInput.value.toLowerCase();
+                const filteredSuggestions = suggestions.filter(suggestion =>
+                    suggestion.toLowerCase().includes(searchTerm)
+                );
+
+                autocompleteList.innerHTML = '';
+                filteredSuggestions.forEach(suggestion => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = suggestion;
+                    listItem.classList.add('px-4', 'py-2', 'hover:bg-gray-100', 'cursor-pointer');
+                    listItem.addEventListener('click', () => {
+                        autocompleteInput.value = suggestion;
+                        autocompleteList.classList.add('hidden');
+                    });
+                    autocompleteList.appendChild(listItem);
+                });
+
+                if (filteredSuggestions.length > 0) {
+                    autocompleteList.classList.remove('hidden');
+                } else {
+                    autocompleteList.classList.add('hidden');
+                }
+            });
+
+            window.addEventListener('click', (event) => {
+                if (!event.target.matches(`#${inputId}`) && !event.target.matches(`#${listId} *`)) {
+                    autocompleteList.classList.add('hidden');
+                }
+            });
+        }
+
+        initAutocomplete('autocompleteInput1', 'autocompleteList1', areas);
+        initAutocomplete('autocompleteInput2', 'autocompleteList2', facultades);
+        initAutocomplete('autocompleteInput3', 'autocompleteList3', escuelasp);
+        initAutocomplete('autocompleteInput4', 'autocompleteList4', modalidades);
+        initAutocomplete('autocompleteInput5', 'autocompleteList5', años);
+    </script>
+
+    <!-- Abrir cerrar el Sidebar -->
+    <script>
+        $(document).ready(function () {
+            $('[data-drawer-target]').on('click', function () {
+                var target = $(this).data('drawer-target');
+                $('#' + target).toggleClass('-translate-x-full'); // Aplica o quita la clase que desplaza el Sidebar
+            });
+        });
+    </script>
+
+    <!-- Mostrar/ocultar el menú -->
+    <script>
+        // Seleccionar el botón y el menú desplegable
+        const button = document.querySelector('.relative button');
+        const menu = document.querySelector('.relative .hidden');
+
+        // Agregar evento al hacer clic en el botón
+        button.addEventListener('click', function () {
+            menu.classList.toggle('hidden'); // Alternar visibilidad del menú
+        });
+
+        // Cerrar el menú al hacer clic fuera de él
+        document.addEventListener('click', function (event) {
+            if (!button.contains(event.target)) {
+                menu.classList.add('hidden'); // Ocultar el menú si se hace clic fuera de él
+            }
+        });
+    </script>
+
+    <!-- Botones de la tabla -->
+    <script>
+        let table = new DataTable('#Tabla01');
+    </script>
+
+
+</body>
+
+</html>
