@@ -4,141 +4,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario con Búsqueda en Select</title>
+    <title>Formulario de Selección</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Estilo para el dropdown */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            border: 1px solid #ddd;
-            z-index: 1;
-            width: 100%;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .dropdown-content.show {
-            display: block;
-        }
-
-        .dropdown-content .option {
-            padding: 8px;
-            cursor: pointer;
-        }
-
-        .dropdown-content .option:hover {
-            background-color: #f1f1f1;
-        }
-
-        .dropdown-content input {
-            border: none;
-            padding: 8px;
-            width: 100%;
-        }
-    </style>
 </head>
 
 <body class="bg-gray-100 flex items-center justify-center h-screen">
 
     <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-        <h1 class="text-2xl font-bold text-gray-700 mb-4">Formulario de Ejemplo</h1>
+        <h1 class="text-2xl font-bold text-gray-700 mb-4">Formulario de Selección</h1>
 
-        <!-- Campo de selección con búsqueda -->
-        <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
-            <h1 class="text-gray-600 font-semibold mb-1">FACULTAD</h1>
-            <div class="dropdown">
-                <input id="custom-select" type="text" placeholder="Buscar..." readonly
-                    class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer">
-                <div id="dropdown-menu" class="dropdown-content">
-                    <input id="search-input" type="text" placeholder="Buscar..."
-                        class="border-b border-gray-300 p-2 w-full">
-                    <!-- Opciones cargadas por JavaScript -->
-                </div>
+        <form>
+            <!-- Campo de Área -->
+            <div class="mb-4">
+                <label for="areaSelect" class="block text-gray-600 text-sm font-medium mb-2">Área</label>
+                <select id="areaSelect"
+                    class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <option value="" disabled selected>Selecciona un área</option>
+                    <option value="bio">Biológicas</option>
+                    <option value="soc">Sociales</option>
+                    <option value="ing">Ingeniería</option>
+                </select>
             </div>
-        </div>
 
+            <!-- Campo de Facultad -->
+            <div class="mb-4">
+                <label for="facultadSelect" class="block text-gray-600 text-sm font-medium mb-2">Facultad</label>
+                <select id="facultadSelect"
+                    class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <option value="" disabled selected>Selecciona una facultad</option>
+                </select>
+            </div>
 
+            <!-- Campo de Escuela -->
+            <div class="mb-4">
+                <label for="escuelaSelect" class="block text-gray-600 text-sm font-medium mb-2">Escuela</label>
+                <select id="escuelaSelect"
+                    class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <option value="" disabled selected>Selecciona una escuela</option>
+                </select>
+            </div>
+        </form>
     </div>
 
-
-    <!-- FACULTADES -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const selectInput = document.getElementById('custom-select');
-            const dropdownMenu = document.getElementById('dropdown-menu');
-            const searchInput = document.getElementById('search-input');
-
-            // Lista de opciones de facultades
-            const options = [
-                { value: '', text: 'Seleccionar', disabled: true, selected: true },
-                { value: 'FAC_TODOS', text: 'Todas las Facultades' },
-                { value: 'FAC_CCA', text: 'Facultad de Ciencias Contables y Administrativas' },
-                { value: 'FAC_ING_MIN', text: 'Facultad de Ingeniería de Minas' },
-                { value: 'FAC_CIE_EDU', text: 'Facultad de Ciencias de la Educación' },
-                { value: 'FAC_ING_AGRI', text: 'Facultad de Ingeniería Agrícola' },
-                { value: 'FAC_CIE_AGRI', text: 'Facultad de Ciencias Agrarias' },
-                { value: 'FAC_ENF', text: 'Facultad de Enfermería' },
-                { value: 'FAC_CIE_JUR', text: 'Facultad de Ciencias Jurídicas y Políticas' },
-                { value: 'FAC_ING_GEO_MET', text: 'Facultad de Ingeniería Geológica y Metalúrgica' },
-                { value: 'FAC_CIE_SAL', text: 'Facultad de Ciencias de la Salud' },
-                { value: 'FAC_MED_VET', text: 'Facultad de Medicina Veterinaria y Zootecnia' },
-                { value: 'FAC_TRABAJO_SOC', text: 'Facultad de Trabajo Social' },
-                { value: 'FAC_ING_QUIM', text: 'Facultad de Ingeniería Química' },
-                { value: 'FAC_ING_EST_INF', text: 'Facultad de Ingeniería Estadística e Informática' },
-                { value: 'FAC_ING_ME_ELE_SIS', text: 'Facultad de Ingeniería Mecánica Eléctrica, Electrónica y Sistemas' },
-                { value: 'FAC_ING_ECON', text: 'Facultad de Ingeniería Económica' },
-                { value: 'FAC_CIE_SOC', text: 'Facultad de Ciencias Sociales' },
-                { value: 'FAC_CIE_BIO', text: 'Facultad de Ciencias Biológicas' },
-                { value: 'FAC_ING_CIVIL_ARQ', text: 'Facultad de Ingeniería Civil y Arquitectura' },
-                { value: 'FAC_MED_HUM', text: 'Facultad de Medicina Humana' }
-            ];
-
-            // Crear las opciones del dropdown
-            options.forEach(option => {
-                const div = document.createElement('div');
-                div.classList.add('option');
-                div.textContent = option.text;
-                div.dataset.value = option.value;
-                dropdownMenu.appendChild(div);
-            });
-
-            // Mostrar el dropdown
-            selectInput.addEventListener('click', function () {
-                dropdownMenu.classList.toggle('show');
-                searchInput.focus();
-            });
-
-            // Seleccionar una opción
-            dropdownMenu.addEventListener('click', function (event) {
-                if (event.target.classList.contains('option')) {
-                    selectInput.value = event.target.textContent;
-                    selectInput.dataset.value = event.target.dataset.value;
-                    dropdownMenu.classList.remove('show');
+            
+            // Datos de Facultades y Escuelas
+            const faculties = {
+                'bio': {
+                    'FAC_CIE_BIO': 'Facultad de Ciencias Biológicas',
+                    'FAC_CIE_EDU': 'Facultad de Ciencias de la Educación',
+                    'FAC_CIE_SOC': 'Facultad de Ciencias Sociales',
+                    'FAC_CIE_AGRI': 'Facultad de Ciencias Agrarias',
+                    'FAC_CIE_SAL': 'Facultad de Ciencias de la Salud',
+                    'FAC_MED_HUM': 'Facultad de Medicina Humana',
+                    'FAC_ENF': 'Facultad de Enfermería',
+                    'FAC_CIE_BIO': 'Facultad de Ciencias Biológicas'
+                },
+                'soc': {
+                    'FAC_CIE_SOC': 'Facultad de Ciencias Sociales',
+                    'FAC_TRABAJO_SOC': 'Facultad de Trabajo Social',
+                    'FAC_CIE_JUR': 'Facultad de Ciencias Jurídicas y Políticas',
+                },
+                'ing': {
+                    'FAC_ING_MIN': 'Facultad de Ingeniería de Minas',
+                    'FAC_ING_AGRI': 'Facultad de Ingeniería Agrícola',
+                    'FAC_ING_ECON': 'Facultad de Ingeniería Económica',
+                    'FAC_ING_EST_INF': 'Facultad de Ingeniería Estadística e Informática',
+                    'FAC_ING_ME_ELE_SIS': 'Facultad de Ingeniería Mecánica Eléctrica, Electrónica y Sistemas',
+                    'FAC_ING_GEO_MET': 'Facultad de Ingeniería Geológica y Metalúrgica',
+                    'FAC_ING_QUIM': 'Facultad de Ingeniería Química',
+                    'FAC_ING_CIVIL_ARQ': 'Facultad de Ingeniería Civil y Arquitectura'
                 }
+            };
+
+            const schools = {
+                'FAC_CIE_BIO': [
+                    { value: 'ESC_CIE_BIO', text: 'Escuela Profesional de Ciencias Biológicas' },
+                    { value: 'ESC_CIE_PES', text: 'Escuela Profesional de Ciencias Biológicas: Pesquería' },
+                    { value: 'ESC_CIE_MIC', text: 'Escuela Profesional de Ciencias Biológicas: Microbiología' }
+                ],
+                'FAC_CIE_EDU': [
+                    { value: 'ESC_ED_FIS', text: 'Escuela Profesional de Educación Física' },
+                    { value: 'ESC_ED_PRI', text: 'Escuela Profesional de Primaria' },
+                    { value: 'ESC_ED_SEC', text: 'Escuela Profesional de Secundaria' },
+                    { value: 'ESC_ED_INI', text: 'Escuela Profesional de Inicial' }
+                ],
+                'FAC_CIE_SOC': [
+                    { value: 'ESC_SOCIOLOGIA', text: 'Escuela Profesional de Sociología' },
+                    { value: 'ESC_TURISMO', text: 'Escuela Profesional de Turismo' },
+                    { value: 'ESC_ANTROPOLOGIA', text: 'Escuela Profesional de Antropología' },
+                    { value: 'ESC_ARTES', text: 'Escuela Profesional de Artes' },
+                    { value: 'ESC_COM_SOC', text: 'Escuela Profesional de Comunicación Social' }
+                ],
+                'FAC_CIE_SAL': [
+                    { value: 'ESC_NUTRICION', text: 'Escuela Profesional de Nutrición Humana' },
+                    { value: 'ESC_ODONTO', text: 'Escuela Profesional de Odontología' }
+                ],
+                'FAC_MED_HUM': [
+                    { value: 'ESC_MED_HUM', text: 'Escuela Profesional de Medicina Humana' }
+                ],
+                'FAC_ENF': [
+                    { value: 'ESC_ENF', text: 'Escuela Profesional de Enfermería' }
+                ],
+                'FAC_TRABAJO_SOC': [
+                    { value: 'ESC_TRABAJO_SOC', text: 'Escuela Profesional de Trabajo Social' }
+                ],
+                'FAC_ING_MIN': [
+                    { value: 'ESC_ING_MIN', text: 'Escuela Profesional de Ingeniería de Minas' }
+                ],
+                'FAC_ING_AGRI': [
+                    { value: 'ESC_ING_AGRI', text: 'Escuela Profesional de Ingeniería Agrícola' }
+                ],
+                'FAC_ING_ECON': [
+                    { value: 'ESC_ING_ECON', text: 'Escuela Profesional de Ingeniería Económica' }
+                ],
+                'FAC_ING_EST_INF': [
+                    { value: 'ESC_ING_EST_INF', text: 'Escuela Profesional de Ingeniería Estadística e Informática' }
+                ],
+                'FAC_ING_ME_ELE_SIS': [
+                    { value: 'ESC_ING_ELE', text: 'Escuela Profesional de Ingeniería Electrónica' },
+                    { value: 'ESC_ING_ME', text: 'Escuela Profesional de Ingeniería Mecánica Eléctrica' },
+                    { value: 'ESC_ING_SIS', text: 'Escuela Profesional de Ingeniería de Sistemas' }
+                ],
+                'FAC_ING_GEO_MET': [
+                    { value: 'ESC_ING_GEO', text: 'Escuela Profesional de Ingeniería Geológica' },
+                    { value: 'ESC_ING_MET', text: 'Escuela Profesional de Ingeniería Metalúrgica' }
+                ],
+                'FAC_ING_QUIM': [
+                    { value: 'ESC_ING_QUIM', text: 'Escuela Profesional de Ingeniería Química' }
+                ],
+                'FAC_ING_CIVIL_ARQ': [
+                    { value: 'ESC_ING_CIVIL', text: 'Escuela Profesional de Ingeniería Civil' },
+                    { value: 'ESC_ARQ', text: 'Escuela Profesional de Arquitectura y Urbanismo' }
+                ]
+            };
+
+            const areaSelect = document.getElementById('areaSelect');
+            const facultadSelect = document.getElementById('facultadSelect');
+            const escuelaSelect = document.getElementById('escuelaSelect');
+
+            areaSelect.addEventListener('change', function () {
+                const area = this.value;
+                const facultiesList = faculties[area] || {};
+                facultadSelect.innerHTML = '<option value="" disabled selected>Selecciona una facultad</option>';
+                for (const [value, text] of Object.entries(facultiesList)) {
+                    facultadSelect.innerHTML += `<option value="${value}">${text}</option>`;
+                }
+                escuelaSelect.innerHTML = '<option value="" disabled selected>Selecciona una escuela</option>';
             });
 
-            // Filtrar opciones
-            searchInput.addEventListener('input', function () {
-                const filter = searchInput.value.toLowerCase();
-                dropdownMenu.querySelectorAll('.option').forEach(option => {
-                    const text = option.textContent.toLowerCase();
-                    option.style.display = text.includes(filter) ? 'block' : 'none';
+            facultadSelect.addEventListener('change', function () {
+                const faculty = this.value;
+                const schoolsOptions = schools[faculty] || [];
+                escuelaSelect.innerHTML = '<option value="" disabled selected>Selecciona una escuela</option>';
+                schoolsOptions.forEach(({ value, text }) => {
+                    escuelaSelect.innerHTML += `<option value="${value}">${text}</option>`;
                 });
-            });
-
-            // Cerrar el dropdown si se hace clic fuera de él
-            document.addEventListener('click', function (event) {
-                if (!event.target.closest('.dropdown')) {
-                    dropdownMenu.classList.remove('show');
-                }
             });
         });
     </script>
