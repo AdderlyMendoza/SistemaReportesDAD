@@ -8,10 +8,14 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <!-- Incluye jQuery antes de Select2 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+    <!-- Incluye CSS de Select2 -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
+
+    <!-- Incluye JS de Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
 <body>
@@ -138,7 +142,7 @@
             </ul>
         </div>
     </aside>
- 
+
     <!-- Contenido -->
     <div class="p-4 sm:ml-64">
         <div class="p-4 dark:border-gray-700 mt-8">
@@ -150,54 +154,113 @@
             <section class="flex flex-wrap bg-gray-100 justify-between px-6 sm:px-12 py-4 sm:py-8">
                 <div class="flex flex-wrap w-full sm:w-auto">
 
+                    <!-- AREA -->
                     <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
-                        <h1 class="text-gray-600 font-semibold">AREA</h1>
-                        <input type="text" id="autocompleteInput1"
-                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder="Search..." />
-                        <ul id="autocompleteList1"
-                            class="absolute z-10 w-full bg-white border rounded-md shadow-lg hidden">
-                        </ul>
+                        <h1 class=" font-semibold  mb-1">AREA</h1>
+                        <select id=""
+                            class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            placeholder="Seleccionar">
+                            <option value="" disabled selected class="text-gray-600">Seleccionar</option>
+                            <option value="INGENIERIAS" class="text-black">Ingeniería</option>
+                            <option value="BIOMEDICAS" class="text-black">Biomédicas</option>
+                            <option value="SOCIALES" class="text-black">Sociales</option>
+                        </select>
                     </div>
 
+                    <!-- Estilo para los dropdown -->
+                    <style>
+                        .dropdown {
+                            position: relative;
+                            display: inline-block;
+                            width: 100%;
+                        }
+
+                        .dropdown-content {
+                            display: none;
+                            position: absolute;
+                            background-color: white;
+                            border: 1px solid #ddd;
+                            z-index: 1;
+                            width: 100%;
+                            max-height: 200px;
+                            overflow-y: auto;
+                            color: gray;
+                        }
+
+                        .dropdown-content.show {
+                            display: block;
+                        }
+
+                        .dropdown-content .option {
+                            padding: 8px;
+                            cursor: pointer;
+                        }
+
+                        .dropdown-content .option:hover {
+                            background-color: #f1f1f1;
+                        }
+
+                        .dropdown-content input {
+                            border: none;
+                            padding: 8px;
+                            width: 100%;
+                        }
+                    </style>
+
+                    <!-- FACULTAD -->
                     <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
-                        <h1 class="text-gray-600 font-semibold">FACULTAD</h1>
-                        <input type="text" id="autocompleteInput2"
-                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder="Search..." />
-                        <ul id="autocompleteList2"
-                            class="absolute z-10 w-full bg-white border rounded-md shadow-lg hidden">
-                        </ul>
+                        <h1 class="font-semibold mb-1">FACULTAD</h1>
+                        <div class="dropdown">
+                            <input id="custom-select" type="text" placeholder="Seleccionar" readonly
+                                class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer">
+                            <div id="dropdown-menu" class="dropdown-content">
+                                <input id="search-input" type="text" placeholder="Buscar..."
+                                    class="border-b border-gray-300 p-2 w-full">
+                                <!-- Opciones cargadas por JavaScript -->
+                            </div>
+                        </div>
                     </div>
 
+                    <!-- ESCUELA -->
                     <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
-                        <h1 class="text-gray-600 font-semibold">ESCUELA PROFESIONAL</h1>
-                        <input type="text" id="autocompleteInput3"
-                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder="Search..." />
-                        <ul id="autocompleteList3"
-                            class="absolute z-10 w-full bg-white border rounded-md shadow-lg hidden">
-                        </ul>
+                        <h1 class="text-gray-600 font-semibold mb-1">ESCUELA</h1>
+                        <div class="dropdown">
+                            <input id="escuelaSelect" type="text" placeholder="Seleccionar" readonly
+                                class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer">
+                            <div id="dropdown-menu-escuela" class="dropdown-content">
+                                <input id="search-input-escuela" type="text" placeholder="Buscar..."
+                                    class="border-b border-gray-300 p-2 w-full">
+                                <!-- Opciones cargadas por JavaScript -->
+                            </div>
+                        </div>
                     </div>
 
+                    <!-- MODALIDAD DE INGRESO -->
                     <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
-                        <h1 class="text-gray-600 font-semibold">MODALIDAD DE INGRESO</h1>
-                        <input type="text" id="autocompleteInput4"
-                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder="Search..." />
-                        <ul id="autocompleteList4"
-                            class="absolute z-10 w-full bg-white border rounded-md shadow-lg hidden">
-                        </ul>
+                        <h1 class="text-gray-600 font-semibold mb-1">MODALIDAD</h1>
+                        <select id=""
+                            class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            placeholder="Seleccionar">
+                            <option value="" disabled selected class="text-gray-400">Seleccionar</option>
+                            <option value="GENERAL" class="text-black">General</option>
+                            <option value="CEPREUNA" class="text-black">CEPREUNA</option>
+                            <option value="EXTRAORDIONARIO" class="text-black">Extraordinario</option>
+                        </select>
                     </div>
 
-                    <div class="w-full sm:w-auto sm:flex-1 relative px-1">
-                        <h1 class="text-gray-600 font-semibold">AÑO DE INGRESO</h1>
-                        <input type="text" id="autocompleteInput5"
-                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder="Search..." />
-                        <ul id="autocompleteList5"
-                            class="absolute z-10 w-full bg-white border rounded-md shadow-lg hidden">
-                        </ul>
+                    <!-- AÑO DE INGRESO -->
+                    <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
+                        <h1 class="text-gray-600 font-semibold mb-1">AÑO DE INGRESO</h1>
+                        <select id=""
+                            class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            placeholder="Seleccionar">
+                            <option value="" disabled selected class="text-gray-400">Seleccionar</option>
+                            <option value="2024-II" class="text-black">2024-II</option>
+                            <option value="2024-I" class="text-black">2024-I</option>
+                            <option value="2023-II" class="text-black">2023-II</option>
+                            <option value="2023-I" class="text-black">2023-I</option>
+
+                        </select>
                     </div>
 
                 </div>
@@ -245,14 +308,14 @@
                         </thead>
                         <tbody>
                             <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">
-                                
+
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     12-10-2024 11:53 AM
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     Nuno Mendez
                                 </td>
-                                
+
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     Escuela Profesional de Ingeniería de Minas
                                 </td>
@@ -315,14 +378,14 @@
                                 </td>
                             </tr>
                             <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">
-                                
+
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     15-11-2023 13:53 PM
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     Vini Junior
                                 </td>
-                                
+
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     Area Sociales
                                 </td>
@@ -454,14 +517,14 @@
                                 </td>
                             </tr>
                             <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">
-                                
+
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     12-04-2024 11:03 AM
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     Darwin Nuñez
                                 </td>
-                                
+
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     Facultad de Ingenieria Mecanica Electrica Electronica y Sistemas
                                 </td>
@@ -523,14 +586,14 @@
                                     </a>
                                 </td>
                             </tr>
-                            <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">  
+                            <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     15-11-2023 17:53 PM
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     Pedri Quispe
                                 </td>
-                                
+
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     Area Biomedicas
                                 </td>
@@ -670,56 +733,169 @@
         </div>
     </div>
 
-    <!-- Inputs con busqueda -->
+
+    <!-- FACULTADES -->
     <script>
-        const areas = ['Ingeniería', 'Biomédicas', 'Sociales'];
-        const facultades = ['Facultad de ...', 'Facultad de ...', 'Facultad de ...', 'Facultad de ...'];
-        const escuelasp = ['E.P de ...', 'E.P de ...', 'E.P de ...', 'E.P de ...'];
-        const modalidades = ['Examen Extraordinario', 'Examen CEPREUNA', 'Examen General'];
-        const años = ['2023-I', '2023-II', '2024-I', '2024-II'];
+        document.addEventListener('DOMContentLoaded', function () {
+            const selectInput = document.getElementById('custom-select');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            const searchInput = document.getElementById('search-input');
 
-        function initAutocomplete(inputId, listId, suggestions) {
-            const autocompleteInput = document.getElementById(inputId);
-            const autocompleteList = document.getElementById(listId);
+            // Lista de opciones de facultades
+            const options = [
+                { value: 'FAC_TODOS', text: 'Todas las Facultades' },
+                { value: 'FAC_CCA', text: 'Facultad de Ciencias Contables y Administrativas' },
+                { value: 'FAC_ING_MIN', text: 'Facultad de Ingeniería de Minas' },
+                { value: 'FAC_CIE_EDU', text: 'Facultad de Ciencias de la Educación' },
+                { value: 'FAC_ING_AGRI', text: 'Facultad de Ingeniería Agrícola' },
+                { value: 'FAC_CIE_AGRI', text: 'Facultad de Ciencias Agrarias' },
+                { value: 'FAC_ENF', text: 'Facultad de Enfermería' },
+                { value: 'FAC_CIE_JUR', text: 'Facultad de Ciencias Jurídicas y Políticas' },
+                { value: 'FAC_ING_GEO_MET', text: 'Facultad de Ingeniería Geológica y Metalúrgica' },
+                { value: 'FAC_CIE_SAL', text: 'Facultad de Ciencias de la Salud' },
+                { value: 'FAC_MED_VET', text: 'Facultad de Medicina Veterinaria y Zootecnia' },
+                { value: 'FAC_TRABAJO_SOC', text: 'Facultad de Trabajo Social' },
+                { value: 'FAC_ING_QUIM', text: 'Facultad de Ingeniería Química' },
+                { value: 'FAC_ING_EST_INF', text: 'Facultad de Ingeniería Estadística e Informática' },
+                { value: 'FAC_ING_ME_ELE_SIS', text: 'Facultad de Ingeniería Mecánica Eléctrica, Electrónica y Sistemas' },
+                { value: 'FAC_ING_ECON', text: 'Facultad de Ingeniería Económica' },
+                { value: 'FAC_CIE_SOC', text: 'Facultad de Ciencias Sociales' },
+                { value: 'FAC_CIE_BIO', text: 'Facultad de Ciencias Biológicas' },
+                { value: 'FAC_ING_CIVIL_ARQ', text: 'Facultad de Ingeniería Civil y Arquitectura' },
+                { value: 'FAC_MED_HUM', text: 'Facultad de Medicina Humana' }
+            ];
 
-            autocompleteInput.addEventListener('input', () => {
-                const searchTerm = autocompleteInput.value.toLowerCase();
-                const filteredSuggestions = suggestions.filter(suggestion =>
-                    suggestion.toLowerCase().includes(searchTerm)
-                );
+            // Crear las opciones del dropdown
+            options.forEach(option => {
+                const div = document.createElement('div');
+                div.classList.add('option');
+                div.textContent = option.text;
+                div.dataset.value = option.value;
+                dropdownMenu.appendChild(div);
+            });
 
-                autocompleteList.innerHTML = '';
-                filteredSuggestions.forEach(suggestion => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = suggestion;
-                    listItem.classList.add('px-4', 'py-2', 'hover:bg-gray-100', 'cursor-pointer');
-                    listItem.addEventListener('click', () => {
-                        autocompleteInput.value = suggestion;
-                        autocompleteList.classList.add('hidden');
-                    });
-                    autocompleteList.appendChild(listItem);
+            // Mostrar el dropdown
+            selectInput.addEventListener('click', function () {
+                dropdownMenu.classList.toggle('show');
+                searchInput.focus();
+            });
+
+            // Seleccionar una opción
+            dropdownMenu.addEventListener('click', function (event) {
+                if (event.target.classList.contains('option')) {
+                    selectInput.value = event.target.textContent;
+                    selectInput.dataset.value = event.target.dataset.value;
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+
+            // Filtrar opciones
+            searchInput.addEventListener('input', function () {
+                const filter = searchInput.value.toLowerCase();
+                dropdownMenu.querySelectorAll('.option').forEach(option => {
+                    const text = option.textContent.toLowerCase();
+                    option.style.display = text.includes(filter) ? 'block' : 'none';
                 });
-
-                if (filteredSuggestions.length > 0) {
-                    autocompleteList.classList.remove('hidden');
-                } else {
-                    autocompleteList.classList.add('hidden');
-                }
             });
 
-            window.addEventListener('click', (event) => {
-                if (!event.target.matches(`#${inputId}`) && !event.target.matches(`#${listId} *`)) {
-                    autocompleteList.classList.add('hidden');
+            // Cerrar el dropdown si se hace clic fuera de él
+            document.addEventListener('click', function (event) {
+                if (!event.target.closest('.dropdown')) {
+                    dropdownMenu.classList.remove('show');
                 }
             });
-        }
-
-        initAutocomplete('autocompleteInput1', 'autocompleteList1', areas);
-        initAutocomplete('autocompleteInput2', 'autocompleteList2', facultades);
-        initAutocomplete('autocompleteInput3', 'autocompleteList3', escuelasp);
-        initAutocomplete('autocompleteInput4', 'autocompleteList4', modalidades);
-        initAutocomplete('autocompleteInput5', 'autocompleteList5', años);
+        });
     </script>
+
+    <!-- ESCUELAS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const selectInput = document.getElementById('escuelaSelect');
+            const dropdownMenu = document.getElementById('dropdown-menu-escuela');
+            const searchInput = document.getElementById('search-input-escuela');
+
+            // Lista de opciones de escuelas
+            const options = [
+                { value: 'ESC_TODOS', text: 'Todas las Escuelas Profesionales' },
+                { value: 'ESC_CONT', text: 'Escuela de Contabilidad' },
+                { value: 'ESC_ADMIN', text: 'Escuela de Administración' },
+                { value: 'ESC_ING_MIN', text: 'Escuela de Ingeniería de Minas' },
+                { value: 'ESC_ED_SEC', text: 'Escuela de Educación Secundaria' },
+                { value: 'ESC_ED_FIS', text: 'Escuela de Educación Física' },
+                { value: 'ESC_ED_INI', text: 'Escuela de Educación Inicial' },
+                { value: 'ESC_ED_PRI', text: 'Escuela de Educación Primaria' },
+                { value: 'ESC_ING_AGRI', text: 'Escuela de Ingeniería Agrícola' },
+                { value: 'ESC_ING_AGRON', text: 'Escuela de Ingeniería Agronómica' },
+                { value: 'ESC_ING_AGRO', text: 'Escuela de Ingeniería Agroindustrial' },
+                { value: 'ESC_ING_TOP', text: 'Escuela de Ingeniería Topográfica y Agrimensura' },
+                { value: 'ESC_ENF', text: 'Escuela de Enfermería' },
+                { value: 'ESC_DERECHO', text: 'Escuela de Derecho' },
+                { value: 'ESC_ING_GEO', text: 'Escuela de Ingeniería Geológica' },
+                { value: 'ESC_ING_MET', text: 'Escuela de Ingeniería Metalúrgica' },
+                { value: 'ESC_NUTRICION', text: 'Escuela de Nutrición' },
+                { value: 'ESC_ODONTO', text: 'Escuela de Odontología' },
+                { value: 'ESC_MED_VET', text: 'Escuela de Medicina Veterinaria y Zootecnia' },
+                { value: 'ESC_TRABAJO_SOC', text: 'Escuela de Trabajo Social' },
+                { value: 'ESC_ING_QUIM', text: 'Escuela de Ingeniería Química' },
+                { value: 'ESC_ING_EST_INF', text: 'Escuela de Ingeniería Estadística e Informática' },
+                { value: 'ESC_ING_ELE', text: 'Escuela de Ingeniería Electrónica' },
+                { value: 'ESC_ING_ME', text: 'Escuela de Ingeniería Mecánica Electrónica' },
+                { value: 'ESC_ING_SIS', text: 'Escuela de Ingeniería de Sistemas' },
+                { value: 'ESC_ING_ECON', text: 'Escuela de Ingeniería Económica' },
+                { value: 'ESC_SOCIOLOGIA', text: 'Escuela de Sociología' },
+                { value: 'ESC_TURISMO', text: 'Escuela de Turismo' },
+                { value: 'ESC_ANTROPOLOGIA', text: 'Escuela de Antropología' },
+                { value: 'ESC_ARTES', text: 'Escuela de Artes' },
+                { value: 'ESC_COM_SOC', text: 'Escuela de Comunicación Social' },
+                { value: 'ESC_CIE_BIO', text: 'Escuela de Ciencias Biológicas' },
+                { value: 'ESC_FIS_MAT', text: 'Escuela de Física Matemática' },
+                { value: 'ESC_ING_CIVIL', text: 'Escuela de Ingeniería Civil' },
+                { value: 'ESC_ARQ', text: 'Escuela de Arquitectura y Urbanismo' },
+                { value: 'ESC_MED_HUM', text: 'Escuela de Medicina Humana' }
+            ];
+
+            // Crear las opciones del dropdown
+            options.forEach(option => {
+                const div = document.createElement('div');
+                div.classList.add('option');
+                div.textContent = option.text;
+                div.dataset.value = option.value;
+                dropdownMenu.appendChild(div);
+            });
+
+            // Mostrar el dropdown
+            selectInput.addEventListener('click', function () {
+                dropdownMenu.classList.toggle('show');
+                searchInput.focus();
+            });
+
+            // Seleccionar una opción
+            dropdownMenu.addEventListener('click', function (event) {
+                if (event.target.classList.contains('option')) {
+                    selectInput.value = event.target.textContent;
+                    selectInput.dataset.value = event.target.dataset.value;
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+
+            // Filtrar opciones
+            searchInput.addEventListener('input', function () {
+                const filter = searchInput.value.toLowerCase();
+                dropdownMenu.querySelectorAll('.option').forEach(option => {
+                    const text = option.textContent.toLowerCase();
+                    option.style.display = text.includes(filter) ? 'block' : 'none';
+                });
+            });
+
+            // Cerrar el dropdown si se hace clic fuera de él
+            document.addEventListener('click', function (event) {
+                if (!event.target.closest('.dropdown')) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        });
+    </script>
+
 
     <!-- Abrir cerrar el Sidebar -->
     <script>
@@ -733,17 +909,17 @@
 
     <!-- Mostrar/ocultar el menú -->
     <script>
-        
+
         const button = document.querySelector('.relative button');
         const menu = document.querySelector('.relative .hidden');
-        
+
         button.addEventListener('click', function () {
-            menu.classList.toggle('hidden'); 
+            menu.classList.toggle('hidden');
         });
 
         document.addEventListener('click', function (event) {
             if (!button.contains(event.target)) {
-                menu.classList.add('hidden'); 
+                menu.classList.add('hidden');
             }
         });
     </script>

@@ -4,108 +4,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GENERADOR DE REPORTES - DAD</title>
+    <title>Formulario con Búsqueda en Select</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilo para el dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ddd;
+            z-index: 1;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-content .option {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .dropdown-content .option:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown-content input {
+            border: none;
+            padding: 8px;
+            width: 100%;
+        }
+    </style>
 </head>
 
-<body>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
 
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+        <h1 class="text-2xl font-bold text-gray-700 mb-4">Formulario de Ejemplo</h1>
 
-    <div class=" bg-red-100 p-8 flex text-gray-600">
-
-        <h1 class="px-4">Filtrar por: </h1>
-
-        <div class="flex space-x-4">
-            <div class="relative">
-                <div class="relative">
-                    <button id="dropdownButton1"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex items-center">
-                        AREA
-                        <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" class="ml-4"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z"
-                                fill="#0F0F0F" />
-                        </svg>
-                    </button>
-                </div>
-                <div id="dropdownMenu1" class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden">
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ingenierías</a>
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Biomédicas</a>
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Sociales</a>
+        <!-- Campo de selección con búsqueda -->
+        <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
+            <h1 class="text-gray-600 font-semibold mb-1">FACULTAD</h1>
+            <div class="dropdown">
+                <input id="custom-select" type="text" placeholder="Buscar..." readonly
+                    class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer">
+                <div id="dropdown-menu" class="dropdown-content">
+                    <input id="search-input" type="text" placeholder="Buscar..."
+                        class="border-b border-gray-300 p-2 w-full">
+                    <!-- Opciones cargadas por JavaScript -->
                 </div>
             </div>
-
-            <div class="relative">
-                <button id="dropdownButton2"
-                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    FACULTAD
-                </button>
-                <div id="dropdownMenu2" class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden">
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Facultad de ...</a>
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Facultad de ...</a>
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Facultad de ...</a>
-                </div>
-            </div>
-
-            <div class="relative">
-                <button id="dropdownButton3"
-                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    ESCUELA
-                </button>
-                <div id="dropdownMenu3" class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden">
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a>
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 2</a>
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 3</a>
-                </div>
-            </div>
-
-            <div class="relative">
-                <button id="dropdownButton4"
-                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    MODALIDAD DE INGRESO
-                </button>
-                <div id="dropdownMenu4" class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden">
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a>
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 2</a>
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 3</a>
-                </div>
-            </div>
-
-            <div class="relative">
-                <button id="dropdownButton5"
-                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    AÑO DE INGRESO
-                </button>
-                <div id="dropdownMenu5" class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden">
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">2023 - I</a>
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">2023 - II</a>
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">2024 - I</a>
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">2024 - II</a>
-                </div>
-            </div>
-
         </div>
+
+
     </div>
 
+
+    <!-- FACULTADES -->
     <script>
-        const dropdownButtons = document.querySelectorAll('[id^="dropdownButton"]');
-        const dropdownMenus = document.querySelectorAll('[id^="dropdownMenu"]');
+        document.addEventListener('DOMContentLoaded', function () {
+            const selectInput = document.getElementById('custom-select');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            const searchInput = document.getElementById('search-input');
 
-        dropdownButtons.forEach((button, index) => {
-            button.addEventListener('click', () => {
-                dropdownMenus[index].classList.toggle('hidden');
+            // Lista de opciones de facultades
+            const options = [
+                { value: '', text: 'Seleccionar', disabled: true, selected: true },
+                { value: 'FAC_TODOS', text: 'Todas las Facultades' },
+                { value: 'FAC_CCA', text: 'Facultad de Ciencias Contables y Administrativas' },
+                { value: 'FAC_ING_MIN', text: 'Facultad de Ingeniería de Minas' },
+                { value: 'FAC_CIE_EDU', text: 'Facultad de Ciencias de la Educación' },
+                { value: 'FAC_ING_AGRI', text: 'Facultad de Ingeniería Agrícola' },
+                { value: 'FAC_CIE_AGRI', text: 'Facultad de Ciencias Agrarias' },
+                { value: 'FAC_ENF', text: 'Facultad de Enfermería' },
+                { value: 'FAC_CIE_JUR', text: 'Facultad de Ciencias Jurídicas y Políticas' },
+                { value: 'FAC_ING_GEO_MET', text: 'Facultad de Ingeniería Geológica y Metalúrgica' },
+                { value: 'FAC_CIE_SAL', text: 'Facultad de Ciencias de la Salud' },
+                { value: 'FAC_MED_VET', text: 'Facultad de Medicina Veterinaria y Zootecnia' },
+                { value: 'FAC_TRABAJO_SOC', text: 'Facultad de Trabajo Social' },
+                { value: 'FAC_ING_QUIM', text: 'Facultad de Ingeniería Química' },
+                { value: 'FAC_ING_EST_INF', text: 'Facultad de Ingeniería Estadística e Informática' },
+                { value: 'FAC_ING_ME_ELE_SIS', text: 'Facultad de Ingeniería Mecánica Eléctrica, Electrónica y Sistemas' },
+                { value: 'FAC_ING_ECON', text: 'Facultad de Ingeniería Económica' },
+                { value: 'FAC_CIE_SOC', text: 'Facultad de Ciencias Sociales' },
+                { value: 'FAC_CIE_BIO', text: 'Facultad de Ciencias Biológicas' },
+                { value: 'FAC_ING_CIVIL_ARQ', text: 'Facultad de Ingeniería Civil y Arquitectura' },
+                { value: 'FAC_MED_HUM', text: 'Facultad de Medicina Humana' }
+            ];
+
+            // Crear las opciones del dropdown
+            options.forEach(option => {
+                const div = document.createElement('div');
+                div.classList.add('option');
+                div.textContent = option.text;
+                div.dataset.value = option.value;
+                dropdownMenu.appendChild(div);
             });
-        });
 
-        window.addEventListener('click', (event) => {
-            dropdownButtons.forEach((button, index) => {
-                if (!event.target.matches(`#dropdownButton${index + 1}`) && !event.target.matches(`#dropdownMenu${index + 1} *`)) {
-                    dropdownMenus[index].classList.add('hidden');
+            // Mostrar el dropdown
+            selectInput.addEventListener('click', function () {
+                dropdownMenu.classList.toggle('show');
+                searchInput.focus();
+            });
+
+            // Seleccionar una opción
+            dropdownMenu.addEventListener('click', function (event) {
+                if (event.target.classList.contains('option')) {
+                    selectInput.value = event.target.textContent;
+                    selectInput.dataset.value = event.target.dataset.value;
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+
+            // Filtrar opciones
+            searchInput.addEventListener('input', function () {
+                const filter = searchInput.value.toLowerCase();
+                dropdownMenu.querySelectorAll('.option').forEach(option => {
+                    const text = option.textContent.toLowerCase();
+                    option.style.display = text.includes(filter) ? 'block' : 'none';
+                });
+            });
+
+            // Cerrar el dropdown si se hace clic fuera de él
+            document.addEventListener('click', function (event) {
+                if (!event.target.closest('.dropdown')) {
+                    dropdownMenu.classList.remove('show');
                 }
             });
         });
     </script>
+
 </body>
 
 </html>
