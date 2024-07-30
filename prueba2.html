@@ -149,7 +149,7 @@
             <h1 class="py-8 font-bold text-xl">GENERAR REPORTES</h1>
 
             <!-- Inputs y Generar reporte -->
-            <section class="flex bg-gray-100 justify-between px-6 sm:px-12 py-4 sm:py-8">
+            <section class="flex bg-gray-100 sm:px-8 py-4 sm:py-8">
 
                 <div class="flex flex-1 sm:w-auto">
 
@@ -159,6 +159,7 @@
                         <select id="areaSelect"
                             class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
                             <option value="" disabled selected>Seleccionar</option>
+                            <option value="todas_areas">Todas las áreas</option>
                             <option value="bio">Biomédicas</option>
                             <option value="soc">Sociales</option>
                             <option value="ing">Ingenierías</option>
@@ -687,7 +688,11 @@
 
             // Datos de Facultades y Escuelas
             const facultades = {
+                'todas_areas': {
+                    'FAC_TODAS': 'Todas las Facultades',
+                },
                 'bio': {
+                    'FAC_TODAS': 'Todas las Facultades',
                     'FAC_CIE_BIO': 'Facultad de Ciencias Biológicas',
                     'FAC_CIE_EDU': 'Facultad de Ciencias de la Educación',
                     'FAC_CIE_SOC': 'Facultad de Ciencias Sociales',
@@ -698,11 +703,13 @@
                     'FAC_CIE_BIO': 'Facultad de Ciencias Biológicas'
                 },
                 'soc': {
+                    'FAC_TODAS': 'Todas las Facultades',
                     'FAC_CIE_SOC': 'Facultad de Ciencias Sociales',
                     'FAC_TRABAJO_SOC': 'Facultad de Trabajo Social',
                     'FAC_CIE_JUR': 'Facultad de Ciencias Jurídicas y Políticas',
                 },
                 'ing': {
+                    'FAC_TODAS': 'Todas las Facultades',
                     'FAC_ING_MIN': 'Facultad de Ingeniería de Minas',
                     'FAC_ING_AGRI': 'Facultad de Ingeniería Agrícola',
                     'FAC_ING_ECON': 'Facultad de Ingeniería Económica',
@@ -715,6 +722,9 @@
             };
 
             const escuelas = {
+                'FAC_TODAS': [
+                    { value: 'TODAS', text: 'Todas las Escuelas Profesionales' }
+                ],
                 'FAC_CIE_BIO': [
                     { value: 'ESC_CIE_BIO', text: 'Escuela Profesional de Ciencias Biológicas' },
                     { value: 'ESC_CIE_PES', text: 'Escuela Profesional de Ciencias Biológicas: Pesquería' },
