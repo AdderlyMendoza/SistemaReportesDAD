@@ -149,12 +149,13 @@
             <h1 class="py-8 font-bold text-xl">GENERAR REPORTES</h1>
 
             <!-- Inputs y Generar reporte -->
-            <section class="flex bg-gray-100 sm:px-8 py-4 sm:py-8">
+            <!-- Inputs y Generar reporte -->
+            <section class="flex flex-col bg-gray-100 px-4 py-4 sm:px-8 sm:py-8">
 
-                <div class="flex flex-1 sm:w-auto">
+                <div class="flex flex-wrap gap-4">
 
                     <!-- AREA -->
-                    <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
+                    <div class="flex-1 min-w-[200px]">
                         <h1 class="text-gray-600 font-semibold mb-1">AREA</h1>
                         <select id="areaSelect"
                             class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
@@ -167,7 +168,7 @@
                     </div>
 
                     <!-- FACULTAD -->
-                    <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
+                    <div class="flex-1 min-w-[200px]">
                         <h1 class="text-gray-600 font-semibold mb-1">FACULTAD</h1>
                         <select id="facultadSelect"
                             class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
@@ -176,7 +177,7 @@
                     </div>
 
                     <!-- ESCUELA -->
-                    <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
+                    <div class="flex-1 min-w-[200px]">
                         <h1 class="text-gray-600 font-semibold mb-1">ESCUELA</h1>
                         <select id="escuelaSelect"
                             class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
@@ -185,44 +186,41 @@
                     </div>
 
                     <!-- MODALIDAD DE INGRESO -->
-                    <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
+                    <div class="flex-1 min-w-[200px]">
                         <h1 class="text-gray-600 font-semibold mb-1">MODALIDAD</h1>
                         <select id=""
                             class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
                             <option value="" disabled selected class="text-gray-400">Seleccionar</option>
                             <option value="GENERAL" class="text-black">General</option>
                             <option value="CEPREUNA" class="text-black">CEPREUNA</option>
-                            <option value="EXTRAORDIONARIO" class="text-black">Extraordinario</option>
+                            <option value="EXTRAORDINARIO" class="text-black">Extraordinario</option>
                         </select>
                     </div>
 
                     <!-- AÑO -->
-                    <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
+                    <div class="flex-1 min-w-[200px]">
                         <h1 class="text-gray-600 font-semibold mb-1">AÑO</h1>
                         <select id=""
-                            class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            placeholder="Seleccionar">
+                            class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
                             <option value="" disabled selected class="text-gray-400">Seleccionar</option>
                             <option value="2024-II" class="text-black">2024-II</option>
                             <option value="2024-I" class="text-black">2024-I</option>
                             <option value="2023-II" class="text-black">2023-II</option>
                             <option value="2023-I" class="text-black">2023-I</option>
-
                         </select>
                     </div>
 
                 </div>
 
-                <div class="flex-none w-full sm:w-auto mt-4 sm:mt-0">
-                    <div class="m-2">
-                        <button id="dropdownButton2"
-                            class="bg-green-500 hover:bg-green-700 text-white font-semibold m-2 p-2 rounded">
-                            GENERAR REPORTE
-                        </button>
-                    </div>
+                <div class="flex justify-center mt-4">
+                    <button id="dropdownButton2"
+                        class="bg-green-500 hover:bg-green-700 text-white font-semibold p-2 rounded">
+                        GENERAR REPORTE
+                    </button>
                 </div>
 
             </section>
+
 
             <!-- Tabla -->
             <section class="px-4 sm:px-6 lg:px-8">
