@@ -4,54 +4,695 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Selección</title>
+    <title>Document</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tablas -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+
 </head>
 
-<body class="bg-gray-100 flex items-center justify-center h-screen">
+<body>
 
-    <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-        <h1 class="text-2xl font-bold text-gray-700 mb-4">Formulario de Selección</h1>
-
-        <form>
-            <!-- Campo de Área -->
-            <div class="mb-4">
-                <label for="areaSelect" class="block text-gray-600 text-sm font-medium mb-2">Área</label>
-                <select id="areaSelect"
-                    class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                    <option value="" disabled selected>Selecciona un área</option>
-                    <option value="bio">Biológicas</option>
-                    <option value="soc">Sociales</option>
-                    <option value="ing">Ingeniería</option>
-                </select>
+    <!-- UNA PUNO / DAD NOMBRE E IMAGEN DE USER -->
+    <nav class="fixed top-0 z-50 w-full border-b border-gray-200 bg-gray-800 border-gray-700">
+        <div class="px-3 py-3 lg:px-5 lg:pl-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center justify-start rtl:justify-end">
+                    <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar"
+                        aria-controls="logo-sidebar" type="button"
+                        class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+                        <span class="sr-only">Abrir Sidebar</span>
+                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path clip-rule="evenodd" fill-rule="evenodd"
+                                d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
+                            </path>
+                        </svg>
+                    </button>
+                    <a href="#" class="flex ms-2 md:me-24">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Logo_UNAP.png/800px-Logo_UNAP.png"
+                            class="h-8 me-3" alt="FlowBite Logo" />
+                        <span
+                            class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">UNA
+                            PUNO / DAD</span>
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <div class="flex items-center ms-3">
+                        <!-- Menu desplegable USER -->
+                        <div class="relative">
+                            <button class="flex justify-start items-center" aria-expanded="false"
+                                data-dropdown-toggle="dropdown-user">
+                                <span class="text-white font-medium mr-2">Name User</span>
+                                <img class="w-8 h-8 rounded-full hover:opacity-100"
+                                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                                    alt="user photo">
+                            </button>
+                            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden">
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opción 01</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opción 02</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opción 03</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </nav>
 
-            <!-- Campo de Facultad -->
-            <div class="mb-4">
-                <label for="facultadSelect" class="block text-gray-600 text-sm font-medium mb-2">Facultad</label>
-                <select id="facultadSelect"
-                    class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                    <option value="" disabled selected>Selecciona una facultad</option>
-                </select>
-            </div>
+    <!-- SIDEBAR -->
+    <aside id="logo-sidebar"
+        class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        aria-label="Sidebar">
+        <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+            <ul class="space-y-2 font-medium">
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 22 21">
+                            <path
+                                d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+                            <path
+                                d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+                        </svg>
+                        <span class="ms-3">Generar Reporte</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 18 18">
+                            <path
+                                d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
+                        </svg>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Opción 01</span>
+                        <span
+                            class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 20 20">
+                            <path
+                                d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />
+                        </svg>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Opción 02</span>
+                        <span
+                            class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 20 18">
+                            <path
+                                d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
+                        </svg>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Opción 03</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 18 20">
+                            <path
+                                d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z" />
+                        </svg>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Opción 04</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
 
-            <!-- Campo de Escuela -->
-            <div class="mb-4">
-                <label for="escuelaSelect" class="block text-gray-600 text-sm font-medium mb-2">Escuela</label>
-                <select id="escuelaSelect"
-                    class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                    <option value="" disabled selected>Selecciona una escuela</option>
-                </select>
-            </div>
-        </form>
+    <!-- Contenido -->
+    <div class="p-4 sm:ml-64">
+        <div class="p-4 dark:border-gray-700 mt-8">
+
+            <!-- Titulo -->
+            <h1 class="py-8 font-bold text-xl">GENERAR REPORTES</h1>
+
+            <!-- Inputs y Generar reporte -->
+            <section class="flex bg-gray-100 sm:px-8 py-4 sm:py-8">
+
+                <div class="flex flex-1 sm:w-auto">
+
+                    <!-- AREA -->
+                    <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
+                        <h1 class="text-gray-600 font-semibold mb-1">AREA</h1>
+                        <select id="areaSelect"
+                            class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option value="" disabled selected>Seleccionar</option>
+                            <option value="todas_areas">Todas las áreas</option>
+                            <option value="bio">Biomédicas</option>
+                            <option value="soc">Sociales</option>
+                            <option value="ing">Ingenierías</option>
+                        </select>
+                    </div>
+
+                    <!-- FACULTAD -->
+                    <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
+                        <h1 class="text-gray-600 font-semibold mb-1">FACULTAD</h1>
+                        <select id="facultadSelect"
+                            class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option value="" disabled selected>Seleccionar</option>
+                        </select>
+                    </div>
+
+                    <!-- ESCUELA -->
+                    <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
+                        <h1 class="text-gray-600 font-semibold mb-1">ESCUELA</h1>
+                        <select id="escuelaSelect"
+                            class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option value="" disabled selected>Seleccionar</option>
+                        </select>
+                    </div>
+
+                    <!-- MODALIDAD DE INGRESO -->
+                    <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
+                        <h1 class="text-gray-600 font-semibold mb-1">MODALIDAD</h1>
+                        <select id=""
+                            class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option value="" disabled selected class="text-gray-400">Seleccionar</option>
+                            <option value="GENERAL" class="text-black">General</option>
+                            <option value="CEPREUNA" class="text-black">CEPREUNA</option>
+                            <option value="EXTRAORDIONARIO" class="text-black">Extraordinario</option>
+                        </select>
+                    </div>
+
+                    <!-- AÑO -->
+                    <div class="w-full sm:w-auto sm:flex-1 relative px-1 mb-4 sm:mb-0">
+                        <h1 class="text-gray-600 font-semibold mb-1">AÑO</h1>
+                        <select id=""
+                            class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            placeholder="Seleccionar">
+                            <option value="" disabled selected class="text-gray-400">Seleccionar</option>
+                            <option value="2024-II" class="text-black">2024-II</option>
+                            <option value="2024-I" class="text-black">2024-I</option>
+                            <option value="2023-II" class="text-black">2023-II</option>
+                            <option value="2023-I" class="text-black">2023-I</option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="flex-none w-full sm:w-auto mt-4 sm:mt-0">
+                    <div class="m-2">
+                        <button id="dropdownButton2"
+                            class="bg-green-500 hover:bg-green-700 text-white font-semibold m-2 p-2 rounded">
+                            GENERAR REPORTE
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Tabla -->
+            <section class="px-4 sm:px-6 lg:px-8">
+                <div>
+                    <h1 class="pt-8 pb-2 font-semibold text-xl">LISTA DE REPORTES GENERADOS</h1>
+                </div>
+                <hr class="py-2">
+
+                <div class="overflow-x-auto shadow-md sm:rounded-lg">
+                    <table id="Tabla01" class="w-full text-sm text-left text-black my-2 py-2">
+                        <thead class="text-sm uppercase bg-gray-200">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Fecha y hora
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Usuario
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Detalle del reporte
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Modalidad
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Año
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Reporte
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">
+
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    12-10-2024 11:53 AM
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    Nuno Mendez
+                                </td>
+
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    Escuela Profesional de Ingeniería de Minas
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    CEPREUNA
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    2024-I
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <a href="ingresantes.pdf" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="35px" height="35px"
+                                            viewBox="0 0 400 400">
+
+                                            <defs>
+
+                                                <style>
+                                                    .cls-1 {
+                                                        fill: #ff402f;
+                                                    }
+                                                </style>
+
+                                            </defs>
+
+                                            <title />
+
+                                            <g id="xxx-word">
+
+                                                <path class="cls-1"
+                                                    d="M325,105H250a5,5,0,0,1-5-5V25a5,5,0,0,1,10,0V95h70a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M325,154.83a5,5,0,0,1-5-5V102.07L247.93,30H100A20,20,0,0,0,80,50v98.17a5,5,0,0,1-10,0V50a30,30,0,0,1,30-30H250a5,5,0,0,1,3.54,1.46l75,75A5,5,0,0,1,330,100v49.83A5,5,0,0,1,325,154.83Z" />
+
+                                                <path class="cls-1"
+                                                    d="M300,380H100a30,30,0,0,1-30-30V275a5,5,0,0,1,10,0v75a20,20,0,0,0,20,20H300a20,20,0,0,0,20-20V275a5,5,0,0,1,10,0v75A30,30,0,0,1,300,380Z" />
+
+                                                <path class="cls-1"
+                                                    d="M275,280H125a5,5,0,0,1,0-10H275a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M200,330H125a5,5,0,0,1,0-10h75a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M325,280H75a30,30,0,0,1-30-30V173.17a30,30,0,0,1,30-30h.2l250,1.66a30.09,30.09,0,0,1,29.81,30V250A30,30,0,0,1,325,280ZM75,153.17a20,20,0,0,0-20,20V250a20,20,0,0,0,20,20H325a20,20,0,0,0,20-20V174.83a20.06,20.06,0,0,0-19.88-20l-250-1.66Z" />
+
+                                                <path class="cls-1"
+                                                    d="M145,236h-9.61V182.68h21.84q9.34,0,13.85,4.71a16.37,16.37,0,0,1-.37,22.95,17.49,17.49,0,0,1-12.38,4.53H145Zm0-29.37h11.37q4.45,0,6.8-2.19a7.58,7.58,0,0,0,2.34-5.82,8,8,0,0,0-2.17-5.62q-2.17-2.34-7.83-2.34H145Z" />
+
+                                                <path class="cls-1"
+                                                    d="M183,236V182.68H202.7q10.9,0,17.5,7.71t6.6,19q0,11.33-6.8,18.95T200.55,236Zm9.88-7.85h8a14.36,14.36,0,0,0,10.94-4.84q4.49-4.84,4.49-14.41a21.91,21.91,0,0,0-3.93-13.22,12.22,12.22,0,0,0-10.37-5.41h-9.14Z" />
+
+                                                <path class="cls-1"
+                                                    d="M245.59,236H235.7V182.68h33.71v8.24H245.59v14.57h18.75v8H245.59Z" />
+
+                                            </g>
+
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">
+
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    15-11-2023 13:53 PM
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    Vini Junior
+                                </td>
+
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    Area Sociales
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    Extraordinario
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    2023-I
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <a href="ingresantes.pdf" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="35px" height="35px"
+                                            viewBox="0 0 400 400">
+
+                                            <defs>
+
+                                                <style>
+                                                    .cls-1 {
+                                                        fill: #ff402f;
+                                                    }
+                                                </style>
+
+                                            </defs>
+
+                                            <title />
+
+                                            <g id="xxx-word">
+
+                                                <path class="cls-1"
+                                                    d="M325,105H250a5,5,0,0,1-5-5V25a5,5,0,0,1,10,0V95h70a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M325,154.83a5,5,0,0,1-5-5V102.07L247.93,30H100A20,20,0,0,0,80,50v98.17a5,5,0,0,1-10,0V50a30,30,0,0,1,30-30H250a5,5,0,0,1,3.54,1.46l75,75A5,5,0,0,1,330,100v49.83A5,5,0,0,1,325,154.83Z" />
+
+                                                <path class="cls-1"
+                                                    d="M300,380H100a30,30,0,0,1-30-30V275a5,5,0,0,1,10,0v75a20,20,0,0,0,20,20H300a20,20,0,0,0,20-20V275a5,5,0,0,1,10,0v75A30,30,0,0,1,300,380Z" />
+
+                                                <path class="cls-1"
+                                                    d="M275,280H125a5,5,0,0,1,0-10H275a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M200,330H125a5,5,0,0,1,0-10h75a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M325,280H75a30,30,0,0,1-30-30V173.17a30,30,0,0,1,30-30h.2l250,1.66a30.09,30.09,0,0,1,29.81,30V250A30,30,0,0,1,325,280ZM75,153.17a20,20,0,0,0-20,20V250a20,20,0,0,0,20,20H325a20,20,0,0,0,20-20V174.83a20.06,20.06,0,0,0-19.88-20l-250-1.66Z" />
+
+                                                <path class="cls-1"
+                                                    d="M145,236h-9.61V182.68h21.84q9.34,0,13.85,4.71a16.37,16.37,0,0,1-.37,22.95,17.49,17.49,0,0,1-12.38,4.53H145Zm0-29.37h11.37q4.45,0,6.8-2.19a7.58,7.58,0,0,0,2.34-5.82,8,8,0,0,0-2.17-5.62q-2.17-2.34-7.83-2.34H145Z" />
+
+                                                <path class="cls-1"
+                                                    d="M183,236V182.68H202.7q10.9,0,17.5,7.71t6.6,19q0,11.33-6.8,18.95T200.55,236Zm9.88-7.85h8a14.36,14.36,0,0,0,10.94-4.84q4.49-4.84,4.49-14.41a21.91,21.91,0,0,0-3.93-13.22,12.22,12.22,0,0,0-10.37-5.41h-9.14Z" />
+
+                                                <path class="cls-1"
+                                                    d="M245.59,236H235.7V182.68h33.71v8.24H245.59v14.57h18.75v8H245.59Z" />
+
+                                            </g>
+
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    07-07-2024 13:53 PM
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    Joselu Mateo
+                                </td>
+
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    Facultad de Ciencias Contables
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    General
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    2024-I
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <a href="ingresantes.pdf" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="35px" height="35px"
+                                            viewBox="0 0 400 400">
+
+                                            <defs>
+
+                                                <style>
+                                                    .cls-1 {
+                                                        fill: #ff402f;
+                                                    }
+                                                </style>
+
+                                            </defs>
+
+                                            <title />
+
+                                            <g id="xxx-word">
+
+                                                <path class="cls-1"
+                                                    d="M325,105H250a5,5,0,0,1-5-5V25a5,5,0,0,1,10,0V95h70a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M325,154.83a5,5,0,0,1-5-5V102.07L247.93,30H100A20,20,0,0,0,80,50v98.17a5,5,0,0,1-10,0V50a30,30,0,0,1,30-30H250a5,5,0,0,1,3.54,1.46l75,75A5,5,0,0,1,330,100v49.83A5,5,0,0,1,325,154.83Z" />
+
+                                                <path class="cls-1"
+                                                    d="M300,380H100a30,30,0,0,1-30-30V275a5,5,0,0,1,10,0v75a20,20,0,0,0,20,20H300a20,20,0,0,0,20-20V275a5,5,0,0,1,10,0v75A30,30,0,0,1,300,380Z" />
+
+                                                <path class="cls-1"
+                                                    d="M275,280H125a5,5,0,0,1,0-10H275a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M200,330H125a5,5,0,0,1,0-10h75a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M325,280H75a30,30,0,0,1-30-30V173.17a30,30,0,0,1,30-30h.2l250,1.66a30.09,30.09,0,0,1,29.81,30V250A30,30,0,0,1,325,280ZM75,153.17a20,20,0,0,0-20,20V250a20,20,0,0,0,20,20H325a20,20,0,0,0,20-20V174.83a20.06,20.06,0,0,0-19.88-20l-250-1.66Z" />
+
+                                                <path class="cls-1"
+                                                    d="M145,236h-9.61V182.68h21.84q9.34,0,13.85,4.71a16.37,16.37,0,0,1-.37,22.95,17.49,17.49,0,0,1-12.38,4.53H145Zm0-29.37h11.37q4.45,0,6.8-2.19a7.58,7.58,0,0,0,2.34-5.82,8,8,0,0,0-2.17-5.62q-2.17-2.34-7.83-2.34H145Z" />
+
+                                                <path class="cls-1"
+                                                    d="M183,236V182.68H202.7q10.9,0,17.5,7.71t6.6,19q0,11.33-6.8,18.95T200.55,236Zm9.88-7.85h8a14.36,14.36,0,0,0,10.94-4.84q4.49-4.84,4.49-14.41a21.91,21.91,0,0,0-3.93-13.22,12.22,12.22,0,0,0-10.37-5.41h-9.14Z" />
+
+                                                <path class="cls-1"
+                                                    d="M245.59,236H235.7V182.68h33.71v8.24H245.59v14.57h18.75v8H245.59Z" />
+
+                                            </g>
+
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">
+
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    12-04-2024 11:03 AM
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    Darwin Nuñez
+                                </td>
+
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    Facultad de Ingenieria Mecanica Electrica Electronica y Sistemas
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    CEPREUNA
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    2024-I
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <a href="ingresantes.pdf" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="35px" height="35px"
+                                            viewBox="0 0 400 400">
+
+                                            <defs>
+
+                                                <style>
+                                                    .cls-1 {
+                                                        fill: #ff402f;
+                                                    }
+                                                </style>
+
+                                            </defs>
+
+                                            <title />
+
+                                            <g id="xxx-word">
+
+                                                <path class="cls-1"
+                                                    d="M325,105H250a5,5,0,0,1-5-5V25a5,5,0,0,1,10,0V95h70a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M325,154.83a5,5,0,0,1-5-5V102.07L247.93,30H100A20,20,0,0,0,80,50v98.17a5,5,0,0,1-10,0V50a30,30,0,0,1,30-30H250a5,5,0,0,1,3.54,1.46l75,75A5,5,0,0,1,330,100v49.83A5,5,0,0,1,325,154.83Z" />
+
+                                                <path class="cls-1"
+                                                    d="M300,380H100a30,30,0,0,1-30-30V275a5,5,0,0,1,10,0v75a20,20,0,0,0,20,20H300a20,20,0,0,0,20-20V275a5,5,0,0,1,10,0v75A30,30,0,0,1,300,380Z" />
+
+                                                <path class="cls-1"
+                                                    d="M275,280H125a5,5,0,0,1,0-10H275a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M200,330H125a5,5,0,0,1,0-10h75a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M325,280H75a30,30,0,0,1-30-30V173.17a30,30,0,0,1,30-30h.2l250,1.66a30.09,30.09,0,0,1,29.81,30V250A30,30,0,0,1,325,280ZM75,153.17a20,20,0,0,0-20,20V250a20,20,0,0,0,20,20H325a20,20,0,0,0,20-20V174.83a20.06,20.06,0,0,0-19.88-20l-250-1.66Z" />
+
+                                                <path class="cls-1"
+                                                    d="M145,236h-9.61V182.68h21.84q9.34,0,13.85,4.71a16.37,16.37,0,0,1-.37,22.95,17.49,17.49,0,0,1-12.38,4.53H145Zm0-29.37h11.37q4.45,0,6.8-2.19a7.58,7.58,0,0,0,2.34-5.82,8,8,0,0,0-2.17-5.62q-2.17-2.34-7.83-2.34H145Z" />
+
+                                                <path class="cls-1"
+                                                    d="M183,236V182.68H202.7q10.9,0,17.5,7.71t6.6,19q0,11.33-6.8,18.95T200.55,236Zm9.88-7.85h8a14.36,14.36,0,0,0,10.94-4.84q4.49-4.84,4.49-14.41a21.91,21.91,0,0,0-3.93-13.22,12.22,12.22,0,0,0-10.37-5.41h-9.14Z" />
+
+                                                <path class="cls-1"
+                                                    d="M245.59,236H235.7V182.68h33.71v8.24H245.59v14.57h18.75v8H245.59Z" />
+
+                                            </g>
+
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    15-11-2023 17:53 PM
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    Pedri Quispe
+                                </td>
+
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    Area Biomedicas
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    CEPREUNA
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    2023-II
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <a href="ingresantes.pdf" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="35px" height="35px"
+                                            viewBox="0 0 400 400">
+
+                                            <defs>
+
+                                                <style>
+                                                    .cls-1 {
+                                                        fill: #ff402f;
+                                                    }
+                                                </style>
+
+                                            </defs>
+
+                                            <title />
+
+                                            <g id="xxx-word">
+
+                                                <path class="cls-1"
+                                                    d="M325,105H250a5,5,0,0,1-5-5V25a5,5,0,0,1,10,0V95h70a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M325,154.83a5,5,0,0,1-5-5V102.07L247.93,30H100A20,20,0,0,0,80,50v98.17a5,5,0,0,1-10,0V50a30,30,0,0,1,30-30H250a5,5,0,0,1,3.54,1.46l75,75A5,5,0,0,1,330,100v49.83A5,5,0,0,1,325,154.83Z" />
+
+                                                <path class="cls-1"
+                                                    d="M300,380H100a30,30,0,0,1-30-30V275a5,5,0,0,1,10,0v75a20,20,0,0,0,20,20H300a20,20,0,0,0,20-20V275a5,5,0,0,1,10,0v75A30,30,0,0,1,300,380Z" />
+
+                                                <path class="cls-1"
+                                                    d="M275,280H125a5,5,0,0,1,0-10H275a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M200,330H125a5,5,0,0,1,0-10h75a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M325,280H75a30,30,0,0,1-30-30V173.17a30,30,0,0,1,30-30h.2l250,1.66a30.09,30.09,0,0,1,29.81,30V250A30,30,0,0,1,325,280ZM75,153.17a20,20,0,0,0-20,20V250a20,20,0,0,0,20,20H325a20,20,0,0,0,20-20V174.83a20.06,20.06,0,0,0-19.88-20l-250-1.66Z" />
+
+                                                <path class="cls-1"
+                                                    d="M145,236h-9.61V182.68h21.84q9.34,0,13.85,4.71a16.37,16.37,0,0,1-.37,22.95,17.49,17.49,0,0,1-12.38,4.53H145Zm0-29.37h11.37q4.45,0,6.8-2.19a7.58,7.58,0,0,0,2.34-5.82,8,8,0,0,0-2.17-5.62q-2.17-2.34-7.83-2.34H145Z" />
+
+                                                <path class="cls-1"
+                                                    d="M183,236V182.68H202.7q10.9,0,17.5,7.71t6.6,19q0,11.33-6.8,18.95T200.55,236Zm9.88-7.85h8a14.36,14.36,0,0,0,10.94-4.84q4.49-4.84,4.49-14.41a21.91,21.91,0,0,0-3.93-13.22,12.22,12.22,0,0,0-10.37-5.41h-9.14Z" />
+
+                                                <path class="cls-1"
+                                                    d="M245.59,236H235.7V182.68h33.71v8.24H245.59v14.57h18.75v8H245.59Z" />
+
+                                            </g>
+
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    07-05-2024 14:03 PM
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    Federico Valverde
+                                </td>
+
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    Escuela Profesional de Medicina Humana
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    General
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    2024-I
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <a href="ingresantes.pdf" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="35px" height="35px"
+                                            viewBox="0 0 400 400">
+
+                                            <defs>
+
+                                                <style>
+                                                    .cls-1 {
+                                                        fill: #ff402f;
+                                                    }
+                                                </style>
+
+                                            </defs>
+
+                                            <title />
+
+                                            <g id="xxx-word">
+
+                                                <path class="cls-1"
+                                                    d="M325,105H250a5,5,0,0,1-5-5V25a5,5,0,0,1,10,0V95h70a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M325,154.83a5,5,0,0,1-5-5V102.07L247.93,30H100A20,20,0,0,0,80,50v98.17a5,5,0,0,1-10,0V50a30,30,0,0,1,30-30H250a5,5,0,0,1,3.54,1.46l75,75A5,5,0,0,1,330,100v49.83A5,5,0,0,1,325,154.83Z" />
+
+                                                <path class="cls-1"
+                                                    d="M300,380H100a30,30,0,0,1-30-30V275a5,5,0,0,1,10,0v75a20,20,0,0,0,20,20H300a20,20,0,0,0,20-20V275a5,5,0,0,1,10,0v75A30,30,0,0,1,300,380Z" />
+
+                                                <path class="cls-1"
+                                                    d="M275,280H125a5,5,0,0,1,0-10H275a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M200,330H125a5,5,0,0,1,0-10h75a5,5,0,0,1,0,10Z" />
+
+                                                <path class="cls-1"
+                                                    d="M325,280H75a30,30,0,0,1-30-30V173.17a30,30,0,0,1,30-30h.2l250,1.66a30.09,30.09,0,0,1,29.81,30V250A30,30,0,0,1,325,280ZM75,153.17a20,20,0,0,0-20,20V250a20,20,0,0,0,20,20H325a20,20,0,0,0,20-20V174.83a20.06,20.06,0,0,0-19.88-20l-250-1.66Z" />
+
+                                                <path class="cls-1"
+                                                    d="M145,236h-9.61V182.68h21.84q9.34,0,13.85,4.71a16.37,16.37,0,0,1-.37,22.95,17.49,17.49,0,0,1-12.38,4.53H145Zm0-29.37h11.37q4.45,0,6.8-2.19a7.58,7.58,0,0,0,2.34-5.82,8,8,0,0,0-2.17-5.62q-2.17-2.34-7.83-2.34H145Z" />
+
+                                                <path class="cls-1"
+                                                    d="M183,236V182.68H202.7q10.9,0,17.5,7.71t6.6,19q0,11.33-6.8,18.95T200.55,236Zm9.88-7.85h8a14.36,14.36,0,0,0,10.94-4.84q4.49-4.84,4.49-14.41a21.91,21.91,0,0,0-3.93-13.22,12.22,12.22,0,0,0-10.37-5.41h-9.14Z" />
+
+                                                <path class="cls-1"
+                                                    d="M245.59,236H235.7V182.68h33.71v8.24H245.59v14.57h18.75v8H245.59Z" />
+
+                                            </g>
+
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+        </div>
     </div>
 
+    <!-- Filtrar selecciones de AREA, FACULTAD y ESCUELA -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            
+
             // Datos de Facultades y Escuelas
-            const faculties = {
+            const facultades = {
+                'todas_areas': {
+                    'FAC_TODAS': 'Todas las Facultades',
+                },
                 'bio': {
+                    'FAC_TODAS': 'Todas las Facultades',
                     'FAC_CIE_BIO': 'Facultad de Ciencias Biológicas',
                     'FAC_CIE_EDU': 'Facultad de Ciencias de la Educación',
                     'FAC_CIE_SOC': 'Facultad de Ciencias Sociales',
@@ -62,11 +703,13 @@
                     'FAC_CIE_BIO': 'Facultad de Ciencias Biológicas'
                 },
                 'soc': {
+                    'FAC_TODAS': 'Todas las Facultades',
                     'FAC_CIE_SOC': 'Facultad de Ciencias Sociales',
                     'FAC_TRABAJO_SOC': 'Facultad de Trabajo Social',
                     'FAC_CIE_JUR': 'Facultad de Ciencias Jurídicas y Políticas',
                 },
                 'ing': {
+                    'FAC_TODAS': 'Todas las Facultades',
                     'FAC_ING_MIN': 'Facultad de Ingeniería de Minas',
                     'FAC_ING_AGRI': 'Facultad de Ingeniería Agrícola',
                     'FAC_ING_ECON': 'Facultad de Ingeniería Económica',
@@ -78,7 +721,10 @@
                 }
             };
 
-            const schools = {
+            const escuelas = {
+                'FAC_TODAS': [
+                    { value: 'TODAS', text: 'Todas las Escuelas Profesionales' }
+                ],
                 'FAC_CIE_BIO': [
                     { value: 'ESC_CIE_BIO', text: 'Escuela Profesional de Ciencias Biológicas' },
                     { value: 'ESC_CIE_PES', text: 'Escuela Profesional de Ciencias Biológicas: Pesquería' },
@@ -146,23 +792,55 @@
 
             areaSelect.addEventListener('change', function () {
                 const area = this.value;
-                const facultiesList = faculties[area] || {};
-                facultadSelect.innerHTML = '<option value="" disabled selected>Selecciona una facultad</option>';
-                for (const [value, text] of Object.entries(facultiesList)) {
+                const facultadesList = facultades[area] || {};
+                facultadSelect.innerHTML = '<option value="" disabled selected>Seleccionar</option>';
+                for (const [value, text] of Object.entries(facultadesList)) {
                     facultadSelect.innerHTML += `<option value="${value}">${text}</option>`;
                 }
-                escuelaSelect.innerHTML = '<option value="" disabled selected>Selecciona una escuela</option>';
+                escuelaSelect.innerHTML = '<option value="" disabled selected>Seleccionar</option>';
             });
 
             facultadSelect.addEventListener('change', function () {
-                const faculty = this.value;
-                const schoolsOptions = schools[faculty] || [];
-                escuelaSelect.innerHTML = '<option value="" disabled selected>Selecciona una escuela</option>';
-                schoolsOptions.forEach(({ value, text }) => {
+                const facultad = this.value;
+                const escuelasOptions = escuelas[facultad] || [];
+                escuelaSelect.innerHTML = '<option value="" disabled selected>Seleccionar</option>';
+                escuelasOptions.forEach(({ value, text }) => {
                     escuelaSelect.innerHTML += `<option value="${value}">${text}</option>`;
                 });
             });
         });
+    </script>
+
+    <!-- Abrir cerrar el Sidebar -->
+    <script>
+        $(document).ready(function () {
+            $('[data-drawer-target]').on('click', function () {
+                var target = $(this).data('drawer-target');
+                $('#' + target).toggleClass('-translate-x-full'); // Aplica o quita la clase que desplaza el Sidebar
+            });
+        });
+    </script>
+
+    <!-- Mostrar/ocultar el menú -->
+    <script>
+
+        const button = document.querySelector('.relative button');
+        const menu = document.querySelector('.relative .hidden');
+
+        button.addEventListener('click', function () {
+            menu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!button.contains(event.target)) {
+                menu.classList.add('hidden');
+            }
+        });
+    </script>
+
+    <!-- Botones de la tabla -->
+    <script>
+        let table = new DataTable('#Tabla01');
     </script>
 
 </body>
