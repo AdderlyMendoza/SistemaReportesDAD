@@ -13,6 +13,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
 
@@ -212,7 +215,7 @@
                 </div>
 
                 <div class="flex justify-center lg:justify-end mt-4">
-                    <button id="dropdownButton2"
+                    <button id="generateReportButton"
                         class="bg-green-500 hover:bg-green-700 text-white font-semibold p-2 rounded">
                         GENERAR REPORTE
                     </button>
@@ -678,6 +681,50 @@
 
         </div>
     </div>
+
+
+
+    <!-- sweet alert -->
+    <script>
+        // Inicializar SweetAlert con la configuración personalizada
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'bg-green-500 text-white hover:bg-green-700 font-semibold py-2 px-4 rounded m-1',
+                cancelButton: 'bg-red-500 text-white hover:bg-red-700 font-semibold py-2 px-4 rounded m-1'
+            },
+            buttonsStyling: false
+        });
+
+        // Manejar el clic en el botón "Generar Reporte"
+        document.getElementById('generateReportButton').addEventListener('click', function () {
+            swalWithBootstrapButtons.fire({
+                title: "¿Estás seguro?",
+                text: "¡No podrás revertir esto!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Generar",
+                cancelButtonText: "Cancelar",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire({
+                        title: "¡Generado!",
+                        text: "Tu reporte ha sido generado.",
+                        icon: "success"
+                    });
+                    // Aquí puedes añadir la lógica para generar el reporte
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    swalWithBootstrapButtons.fire({
+                        title: "Cancelado",
+                        text: "Tu acción ha sido cancelada.",
+                        icon: "error"
+                    });
+                }
+            });
+        });
+    </script>
+
+
 
     <!-- Filtrar selecciones de AREA, FACULTAD y ESCUELA -->
     <script>
